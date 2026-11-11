@@ -1,0 +1,18 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "desk-energy-e6e2e0",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-11-10",
+  "workers_dev": true,
+  "preview_urls": false,
+  "durable_objects": {
+    "bindings": [{ "name": "ENERGY", "class_name": "EnergyRelay" }]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["EnergyRelay"] }],
+  "secrets": { "required": ["READ_TOKEN", "WRITE_TOKEN"] },
+  "observability": {
+    "enabled": true,
+    "logs": { "enabled": true, "head_sampling_rate": 1 },
+    "traces": { "enabled": true, "head_sampling_rate": 0.01 }
+  }
+}

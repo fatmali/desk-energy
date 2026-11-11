@@ -1,0 +1,361 @@
+{
+  "WFWorkflowName": "Desk Energy Health Data",
+  "WFWorkflowClientVersion": "5114.0.6.204",
+  "WFWorkflowMinimumClientVersion": 900,
+  "WFWorkflowMinimumClientVersionString": "900",
+  "WFWorkflowIcon": {
+    "WFWorkflowIconStartColor": 3031607807,
+    "WFWorkflowIconGlyphNumber": 59511
+  },
+  "WFWorkflowTypes": [],
+  "WFWorkflowInputContentItemClasses": [],
+  "WFWorkflowHasOutputFallback": false,
+  "WFWorkflowActions": [
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.comment",
+      "WFWorkflowActionParameters": {
+        "WFCommentActionText": "Health data reader for the Desk Energy Scriptable script. No calculations, clipboard access, file writes, or network calls. Three Health queries read HRV, resting heart rate and today's active calories. Original uncapped heart-metric history is retained. The final Text output is private Health data: do not share or log it. Add Scriptable's Run Script action after Text, select Desk Energy, set Parameter to Text, and leave Run in App OFF. The script uploads only a small summary to your authenticated Cloudflare relay, not these histories. Run once unlocked and verify permissions; test locked-phone automation separately.",
+        "UUID": "D35CE003-0000-4000-8000-000000000001"
+      }
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.nothing",
+      "WFWorkflowActionParameters": {
+        "UUID": "D35CE003-0000-4000-8000-000000000002"
+      }
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.filter.health.quantity",
+      "WFWorkflowActionParameters": {
+        "WFContentItemLimitEnabled": false,
+        "WFContentItemLimitNumber": 2,
+        "WFContentItemFilter": {
+          "WFSerializationType": "WFContentPredicateTableTemplate",
+          "Value": {
+            "WFActionParameterFilterPrefix": 1,
+            "WFContentPredicateBoundedDate": false,
+            "WFActionParameterFilterTemplates": [
+              {
+                "Bounded": true,
+                "Operator": 4,
+                "Property": "Type",
+                "Removable": false,
+                "Values": {
+                  "Enumeration": {
+                    "WFSerializationType": "WFStringSubstitutableState",
+                    "Value": "Heart Rate Variability"
+                  }
+                }
+              },
+              {
+                "Bounded": true,
+                "Operator": 1001,
+                "Property": "Start Date",
+                "Removable": false,
+                "Values": {
+                  "Number": "3650",
+                  "Unit": 16
+                }
+              }
+            ]
+          }
+        },
+        "UUID": "D35CE003-0000-4000-8000-000000000003"
+      }
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.properties.health.quantity",
+      "WFWorkflowActionParameters": {
+        "WFInput": {
+          "WFSerializationType": "WFTextTokenAttachment",
+          "Value": {
+            "Type": "ActionOutput",
+            "OutputUUID": "D35CE003-0000-4000-8000-000000000003",
+            "OutputName": "Health Samples"
+          }
+        },
+        "WFContentItemPropertyName": "Value",
+        "UUID": "D35CE003-0000-4000-8000-000000000004"
+      }
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.properties.health.quantity",
+      "WFWorkflowActionParameters": {
+        "WFInput": {
+          "WFSerializationType": "WFTextTokenAttachment",
+          "Value": {
+            "Type": "ActionOutput",
+            "OutputUUID": "D35CE003-0000-4000-8000-000000000003",
+            "OutputName": "Health Samples"
+          }
+        },
+        "WFContentItemPropertyName": "Start Date",
+        "UUID": "D35CE003-0000-4000-8000-000000000005"
+      }
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.format.date",
+      "WFWorkflowActionParameters": {
+        "WFDateFormatStyle": "ISO 8601",
+        "WFISO8601IncludeTime": true,
+        "UUID": "D35CE003-0000-4000-8000-000000000006"
+      }
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.nothing",
+      "WFWorkflowActionParameters": {
+        "UUID": "D35CE003-0000-4000-8000-000000000007"
+      }
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.filter.health.quantity",
+      "WFWorkflowActionParameters": {
+        "WFContentItemLimitEnabled": false,
+        "WFContentItemLimitNumber": 2,
+        "WFContentItemFilter": {
+          "WFSerializationType": "WFContentPredicateTableTemplate",
+          "Value": {
+            "WFActionParameterFilterPrefix": 1,
+            "WFContentPredicateBoundedDate": false,
+            "WFActionParameterFilterTemplates": [
+              {
+                "Bounded": true,
+                "Operator": 4,
+                "Property": "Type",
+                "Removable": false,
+                "Values": {
+                  "Enumeration": {
+                    "WFSerializationType": "WFStringSubstitutableState",
+                    "Value": "Resting Heart Rate"
+                  }
+                }
+              },
+              {
+                "Bounded": true,
+                "Operator": 1001,
+                "Property": "Start Date",
+                "Removable": false,
+                "Values": {
+                  "Number": "3650",
+                  "Unit": 16
+                }
+              }
+            ]
+          }
+        },
+        "UUID": "D35CE003-0000-4000-8000-000000000008"
+      }
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.properties.health.quantity",
+      "WFWorkflowActionParameters": {
+        "WFInput": {
+          "WFSerializationType": "WFTextTokenAttachment",
+          "Value": {
+            "Type": "ActionOutput",
+            "OutputUUID": "D35CE003-0000-4000-8000-000000000008",
+            "OutputName": "Health Samples"
+          }
+        },
+        "WFContentItemPropertyName": "Value",
+        "UUID": "D35CE003-0000-4000-8000-000000000009"
+      }
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.properties.health.quantity",
+      "WFWorkflowActionParameters": {
+        "WFInput": {
+          "WFSerializationType": "WFTextTokenAttachment",
+          "Value": {
+            "Type": "ActionOutput",
+            "OutputUUID": "D35CE003-0000-4000-8000-000000000008",
+            "OutputName": "Health Samples"
+          }
+        },
+        "WFContentItemPropertyName": "Start Date",
+        "UUID": "D35CE003-0000-4000-8000-000000000010"
+      }
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.format.date",
+      "WFWorkflowActionParameters": {
+        "WFDateFormatStyle": "ISO 8601",
+        "WFISO8601IncludeTime": true,
+        "UUID": "D35CE003-0000-4000-8000-000000000011"
+      }
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.nothing",
+      "WFWorkflowActionParameters": {
+        "UUID": "D35CE003-0000-4000-8000-000000000012"
+      }
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.filter.health.quantity",
+      "WFWorkflowActionParameters": {
+        "WFContentItemLimitEnabled": false,
+        "WFContentItemLimitNumber": 2,
+        "WFContentItemFilter": {
+          "WFSerializationType": "WFContentPredicateTableTemplate",
+          "Value": {
+            "WFActionParameterFilterPrefix": 1,
+            "WFContentPredicateBoundedDate": false,
+            "WFActionParameterFilterTemplates": [
+              {
+                "Bounded": true,
+                "Operator": 4,
+                "Property": "Type",
+                "Removable": false,
+                "Values": {
+                  "Enumeration": {
+                    "WFSerializationType": "WFStringSubstitutableState",
+                    "Value": "Active Calories"
+                  }
+                }
+              },
+              {
+                "Bounded": true,
+                "Operator": 1002,
+                "Property": "Start Date",
+                "Removable": false,
+                "Values": {}
+              }
+            ]
+          }
+        },
+        "UUID": "D35CE003-0000-4000-8000-000000000013"
+      }
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.properties.health.quantity",
+      "WFWorkflowActionParameters": {
+        "WFInput": {
+          "WFSerializationType": "WFTextTokenAttachment",
+          "Value": {
+            "Type": "ActionOutput",
+            "OutputUUID": "D35CE003-0000-4000-8000-000000000013",
+            "OutputName": "Health Samples"
+          }
+        },
+        "WFContentItemPropertyName": "Value",
+        "UUID": "D35CE003-0000-4000-8000-000000000014"
+      }
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.properties.health.quantity",
+      "WFWorkflowActionParameters": {
+        "WFInput": {
+          "WFSerializationType": "WFTextTokenAttachment",
+          "Value": {
+            "Type": "ActionOutput",
+            "OutputUUID": "D35CE003-0000-4000-8000-000000000013",
+            "OutputName": "Health Samples"
+          }
+        },
+        "WFContentItemPropertyName": "Start Date",
+        "UUID": "D35CE003-0000-4000-8000-000000000015"
+      }
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.format.date",
+      "WFWorkflowActionParameters": {
+        "WFDateFormatStyle": "ISO 8601",
+        "WFISO8601IncludeTime": true,
+        "UUID": "D35CE003-0000-4000-8000-000000000016"
+      }
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.properties.health.quantity",
+      "WFWorkflowActionParameters": {
+        "WFInput": {
+          "WFSerializationType": "WFTextTokenAttachment",
+          "Value": {
+            "Type": "ActionOutput",
+            "OutputUUID": "D35CE003-0000-4000-8000-000000000013",
+            "OutputName": "Health Samples"
+          }
+        },
+        "WFContentItemPropertyName": "End Date",
+        "UUID": "D35CE003-0000-4000-8000-000000000017"
+      }
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.format.date",
+      "WFWorkflowActionParameters": {
+        "WFDateFormatStyle": "ISO 8601",
+        "WFISO8601IncludeTime": true,
+        "UUID": "D35CE003-0000-4000-8000-000000000018"
+      }
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.properties.health.quantity",
+      "WFWorkflowActionParameters": {
+        "WFInput": {
+          "WFSerializationType": "WFTextTokenAttachment",
+          "Value": {
+            "Type": "ActionOutput",
+            "OutputUUID": "D35CE003-0000-4000-8000-000000000013",
+            "OutputName": "Health Samples"
+          }
+        },
+        "WFContentItemPropertyName": "Source",
+        "UUID": "D35CE003-0000-4000-8000-000000000019"
+      }
+    },
+    {
+      "WFWorkflowActionIdentifier": "is.workflow.actions.gettext",
+      "WFWorkflowActionParameters": {
+        "WFTextActionText": {
+          "WFSerializationType": "WFTextTokenString",
+          "Value": {
+            "string": "DESK_ENERGY_V1\n[hrv_values]\n￼\n[hrv_dates]\n￼\n[rhr_values]\n￼\n[rhr_dates]\n￼\n[activity_values]\n￼\n[activity_starts]\n￼\n[activity_ends]\n￼\n[activity_sources]\n￼",
+            "attachmentsByRange": {
+              "{28, 1}": {
+                "Type": "ActionOutput",
+                "OutputUUID": "D35CE003-0000-4000-8000-000000000004",
+                "OutputName": "Value"
+              },
+              "{42, 1}": {
+                "Type": "ActionOutput",
+                "OutputUUID": "D35CE003-0000-4000-8000-000000000006",
+                "OutputName": "Formatted Date"
+              },
+              "{57, 1}": {
+                "Type": "ActionOutput",
+                "OutputUUID": "D35CE003-0000-4000-8000-000000000009",
+                "OutputName": "Value"
+              },
+              "{71, 1}": {
+                "Type": "ActionOutput",
+                "OutputUUID": "D35CE003-0000-4000-8000-000000000011",
+                "OutputName": "Formatted Date"
+              },
+              "{91, 1}": {
+                "Type": "ActionOutput",
+                "OutputUUID": "D35CE003-0000-4000-8000-000000000014",
+                "OutputName": "Value"
+              },
+              "{111, 1}": {
+                "Type": "ActionOutput",
+                "OutputUUID": "D35CE003-0000-4000-8000-000000000016",
+                "OutputName": "Formatted Date"
+              },
+              "{129, 1}": {
+                "Type": "ActionOutput",
+                "OutputUUID": "D35CE003-0000-4000-8000-000000000018",
+                "OutputName": "Formatted Date"
+              },
+              "{150, 1}": {
+                "Type": "ActionOutput",
+                "OutputUUID": "D35CE003-0000-4000-8000-000000000019",
+                "OutputName": "Source"
+              }
+            }
+          }
+        },
+        "UUID": "D35CE003-0000-4000-8000-000000000020"
+      }
+    }
+  ],
+  "WFWorkflowImportQuestions": []
+}

@@ -1,0 +1,29 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Desk Focus: Build with status",
+      "type": "process",
+      "command": "python3",
+      "args": [
+        "tools/desk_focus.py", "run", "build", "ESP32 firmware", "--",
+        "${userHome}/.platformio/penv/bin/platformio", "run", "-e", "esp32dev"
+      ],
+      "options": { "cwd": "${workspaceFolder}" },
+      "group": { "kind": "build", "isDefault": true },
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "Desk Focus: Test with status",
+      "type": "process",
+      "command": "python3",
+      "args": [
+        "tools/desk_focus.py", "run", "test", "Timer and helper tests", "--",
+        "sh", "tools/test_host.sh"
+      ],
+      "options": { "cwd": "${workspaceFolder}" },
+      "group": "test",
+      "problemMatcher": []
+    }
+  ]
+}

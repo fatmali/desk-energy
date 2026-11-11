@@ -1,0 +1,19 @@
+{
+  "captured_at": "2026-11-10T12:30:00Z",
+  "hrv": [
+    { "Start Date": "2026-11-10T12:00:00Z", "Value": 40 },
+    { "Start Date": "2026-11-10T12:00:00Z", "Value": 999 },
+    { "Start Date": "2026-11-10T11:00:00Z", "Value": 20 },
+    { "Start Date": "2026-11-10T10:00:00Z", "Value": 40 },
+    { "Start Date": "2026-11-09T12:00:00Z", "Value": 90 }
+  ],
+  "resting_hr": [
+    { "Start Date": "2026-11-10T12:00:00Z", "Value": 64 },
+    { "Start Date": "2026-11-10T11:00:00Z", "Value": 62 },
+    { "Start Date": "2026-11-09T12:00:00Z", "Value": 60 }
+  ],
+  "activity": [
+    { "Start Date": "2026-11-10T11:00:00Z", "End Date": "2026-11-10T12:00:00Z", "Value": 40, "Source": "Synthetic Watch" },
+    { "Start Date": "2026-11-10T10:00:00Z", "End Date": "2026-11-10T11:00:00Z", "Value": 60, "Source": "Synthetic Watch" }
+  ]
+}
